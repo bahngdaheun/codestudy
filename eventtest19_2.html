@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eventtest19_2</title>
+   
+    <script>
+        function blackChange() {
+            target = document.querySelector('body');
+            target.style.backgroundColor='cadetblue'
+        }
+
+        function whiteChange() {
+            target = document.querySelector('body');
+            target.style.backgroundColor='khaki'
+        }
+
+        function colorToggle() {//버튼 1개가 2가지 역할을 가짐
+            target = document.querySelector('body');
+            if(target.value=="black") {
+                target.style.backgroundColor='tomato'
+                target.value="white"
+            } else {
+                target.style.backgroundColor='turquoise'
+                target.value="black"
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <p></p><br>
+    eventtest19_2.html <br>
+    <table border="1" width="1200" cellspacing="0">
+        <tr bgcolor="yellow">  
+            <th>강의시간</th> 
+            <th>강의과목</th>
+            <th>담당강사</th>
+            <th>강의실</th>
+            <th>기타비고</th>
+        </tr>
+        <tr onmouseover="style.backgroundColor='lightgray' "   onmouseout="style.backgroundColor=''" >
+            <td>오전10:00</td>
+            <td>스프링</td>
+            <td>강감찬</td>
+            <td>종로702</td>
+            <td>비대면 웹엑스사용</td>
+        </tr>
+        <tr onmouseover="style.backgroundColor='forestgreen' "   onmouseout="style.backgroundColor=''">
+            <td>오전12:00</td>
+            <td>jQuery</td>
+            <td>이순신</td>
+            <td>서초506</td>
+            <td>비대면 웹엑스사용</td>
+        </tr>
+        <tr onmouseover="style.backgroundColor='#00FFFF' "   onmouseout="style.backgroundColor=''" >
+            <td>오전12:00</td>
+            <td>java</td>
+            <td>장보고</td>
+            <td>신촌202</td>
+            <td>비대면 웹엑스사용</td>
+        </tr><!--자바에서 쓰는 this처럼 html에서도 생략 가능-->
+        <tr onmouseover="this.style.backgroundColor='#00FFFF' "   onmouseout="this.style.backgroundColor=''">
+            <td>오전12:00</td>
+            <td>SQL튜닝</td>
+            <td>홍길동</td>
+            <td>서초102</td>
+            <td>비대면 웹엑스사용</td>
+        </tr>
+    </table>
+    <p></p><!--태그 style 기술할 때 this 키워드 생략 가능-->
+    <button style="font-size: 16pt;" onclick="blackChange();">dark 바탕색 칼라 변경</button>
+    &nbsp;&nbsp;
+    <button style="font-size: 16pt;" onclick="whiteChange();">light 바탕색 칼라 변경</button>
+    <button style="font-size: 16pt;" onclick="colorToggle();" value="black">dark/light 바탕색 칼라 변경</button>
+</body>
+</html>
