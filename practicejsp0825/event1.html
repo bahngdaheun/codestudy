@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    .bg{
+        background-color: gold;
+    }
+    .bgred{
+        background-color: crimson;
+    }
+</style>
+    <button id="btn">CLICK</button>
+
+    <div id="target" class="bg">
+        <h1>HELLO</h1>
+    </div>
+
+    <script>
+        var btn=document.querySelector("#btn")
+        var target=document.querySelector("#target")
+
+        btn.addEventListener("click", function (e) {
+            target.setAttribute("class", "bgred")
+        }, false)
+    </script>
+
+</body>
+</html>
