@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+  <ul class="items">
+      <li>
+          <div>
+              <span class="menu">떡볶이</span>
+              <span class="price">6000</span>
+          </div>
+      </li>
+      <li>
+          <div>
+              <span class="menu">순대</span>
+              <span class="price">5000</span>
+          </div>
+      </li>
+      <li>
+          <div>
+              <span class="menu">튀김</span>
+              <span class="price">4000</span>
+          </div>
+      </li>
+      <li>
+          <div>
+              <span class="menu">김밥</span>
+              <span class="price">3000</span>
+          </div>
+      </li>
+      <li>
+          <div>
+              <span class="menu">라면</span>
+              <span class="price">5500</span>
+          </div>
+      </li>
+  </ul>
+</div>
+
+<div>
+    <ul class="cart">
+
+    </ul>
+</div>
+<div>
+    <h2 id="total"></h2>
+</div>
+
+<script>
+    var cart=document.querySelector(".cart");
+    var arr=document.querySelectorAll(".items li");
+    var total=document.querySelector("#total")
+
+    for(var i=0; i<arr.length; i++) {
+        arr[i].addEventListener("click", function(e) {
+            var targetLi=this
+            var menu=targetLi.querySelector(".menu").innerHTML
+            var price=targetLi.querySelector(".price").innerHTML
+            var str="<li><span class='tmenu'>"+menu+"</span><span class='tprice'>"+price+"</span><button>X</button></li>"
+            cart.innerHTML+=str
+            makeTotal()
+        }, false);
+    }
+
+    cart.addEventListener("click", evt => {
+        if(evt.target.matches("button")) {
+            var targetLi=evt.target.parentElement
+            cart.removeChild(targetLi)
+            makeTotal()
+        }
+    }, false)
+
+    function makeTotal() {
+        var priceSpans=document.querySelectorAll(".tprice")
+        var sum=0
+        for(var i=0; i<priceSpans.length; i++) {
+            sum+=parseInt(priceSpans[i].innerHTML)
+        }
+        total.innerHTML=sum
+    }
+
+</script>
+
+</body>
+</html>
