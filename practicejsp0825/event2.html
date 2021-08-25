@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<style>
+    .d3{
+        margin: 50px;
+        background-color: indigo;
+    }
+
+    .d2{
+        margin: 50px;
+        background-color: blue;
+        height: 20vh;
+        text-align: center;
+    }
+
+    .d1{
+        margin: 50px;
+        background-color: cornflowerblue;
+        height: 40vh;
+    }
+</style>
+
+<div class="d1">
+    <div class="d2">
+        <div class="d3">
+            <a href="test1.html" class="sample">TEST1</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.querySelector(".d3").addEventListener("click", evt => {
+        evt.preventDefault()
+        console.log("d3")
+    }, false)
+
+    document.querySelector(".d2").addEventListener("click", evt => {
+        console.log("d2")
+        evt.stopPropagation()
+    }, false)
+
+    document.querySelector(".d1").addEventListener("click", evt => {
+        console.log("d1")
+    }, false)
+
+
+</script>
+</body>
+</html>
