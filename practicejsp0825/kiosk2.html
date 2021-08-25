@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div>
+        <ul class="items">
+            <li><div>빅맥</div></li>
+            <li><div>불고기버거</div></li>
+            <li><div>치즈버거</div></li>
+            <li><div>상하이버거</div></li>
+            <li><div>프렌치 프라이</div></li>
+        </ul>
+    </div>
+
+    <div>
+        <ul class="cart">
+
+        </ul>
+    </div>
+
+<script>
+    var cart=document.querySelector(".cart")
+    document.querySelector(".items").addEventListener("click", evt => {
+        cart.innerHTML+="<li>"+evt.target.innerHTML+"<button>X</button></li>"
+    }, false)
+
+    cart.addEventListener("click", evt => {
+        if(evt.target.matches("button")) {
+            var targetLi=evt.target.parentElement
+            cart.removeChild(targetLi)
+        }
+    }, false)
+
+</script>
+</body>
+</html>
