@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        <li>
+            <input type="checkbox" name="box">AAA
+        </li>
+        <li>
+            <input type="checkbox" name="box">BBB
+        </li>
+        <li>
+            <input type="checkbox" name="box">CCC
+        </li>
+        <li>
+            <input type="checkbox" name="box">DDD
+        </li>
+        <li>
+            <input type="checkbox" name="box">EEE
+        </li>
+    </ul>
+
+<div id="target">
+
+</div>
+
+<script>
+    var arr=document.querySelectorAll("input")
+    for(var i=0; i<arr.length; i++) {
+        arr[i].checked=true
+    }
+
+    var target=document.querySelector("#target")
+    target.innerHTML="<button>AAAA</button>";
+    var sample=document.querySelector("input").parentElement
+    var parent=sample.parentElement
+    parent.removeChild(sample)
+
+</script>
+
+</body>
+</html>
