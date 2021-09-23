@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.noriteo.delinori.member.mapper.MemberMapper">
+
+    <sql id="search">
+        <if test="type != null">
+            <foreach collection="arr" item="item" separator=" OR " open="WHERE (" close=")">
+                <if test="item == 'I'.toString()">
+                    mid like concat('%',#{keyword},'%')
+                </if>
+                <if test="item == 'N'.toString()">
+                    mname like concat('%',#{keyword},'%')
+                </if>
+                <if test="item == 'A'.toString()">
+                    maddress like concat('%',#{keyword},'%')
+                </if>
+            </foreach>
+        </if>
+    </sql>
+
+    <insert id="insert">
+        insert newmember (mid, mname, mpw, maddress, memail, mphone)
+        values (#{mid}, #{mname}, #{mpw}, #{maddress}, #{memail}, #{mphone})
+        <selectKey order="AFTER" resultType="java.lang.String" keyProperty="mid">
+            select last_insert_id()
+        </selectKey>
+    </insert>
+
+    <select id="getList" resultType="com.noriteo.delinori.member.domain.Member">
+        select * from newmember
+        <include refid="search"></include>
+        order by mid desc limit #{skip},#{size}
+    </select>
+
+    <select id="getCount" resultType="int">
+        select count(mid) from newmember
+        <include refid="search"></include>
+    </select>
+
+    <select id="select" resultType="com.noriteo.delinori.member.domain.Member">
+        select * from newmember where mid=#{mid}
+    </select>
+
+    <delete id="delete">
+        delete from newmember where mid=#{mid}
+    </delete>
+ </mapper>
